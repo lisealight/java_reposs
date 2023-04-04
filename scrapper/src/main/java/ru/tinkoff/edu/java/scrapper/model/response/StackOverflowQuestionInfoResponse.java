@@ -1,24 +1,27 @@
 package ru.tinkoff.edu.java.scrapper.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class StackOverflowQuestionInfoResponse {
     private List<Items> items;
     @JsonProperty("has_more")
     private Boolean hasMore;
 
-
-    @Data
+    @Getter
+    @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
+    @Builder
     private static class Items {
-        //        @JsonProperty("")
         private List<String> tags;
         private Owner owner;
         @JsonProperty("creation_date")
@@ -29,8 +32,11 @@ public class StackOverflowQuestionInfoResponse {
         private String title;
     }
 
-    @Data
+    @Getter
+    @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
+    @Builder
     private static class Owner {
         @JsonProperty("account_id")
         private Long accountId;

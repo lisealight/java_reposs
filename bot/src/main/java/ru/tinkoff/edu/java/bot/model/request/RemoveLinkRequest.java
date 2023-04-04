@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.scrapper.model.request;
+package ru.tinkoff.edu.java.bot.model.request;
 
 import lombok.*;
 

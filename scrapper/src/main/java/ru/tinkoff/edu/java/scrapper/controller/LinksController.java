@@ -3,7 +3,9 @@ package ru.tinkoff.edu.java.scrapper.controller;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +16,13 @@ import ru.tinkoff.edu.java.scrapper.model.request.RemoveLinkRequest;
 import ru.tinkoff.edu.java.scrapper.model.response.LinkResponse;
 import ru.tinkoff.edu.java.scrapper.model.response.ListLinksResponse;
 
+import java.net.URI;
+import java.util.ArrayList;
+
 @RestController
+@RequiredArgsConstructor
 public class LinksController implements Links {
+    private final HttpServletRequest request;
 
     @Override
     public ResponseEntity<ListLinksResponse> getLinks(
@@ -24,9 +31,15 @@ public class LinksController implements Links {
                     required = true, schema = @Schema())
             @RequestHeader(
                     value = "Tg-Chat-Id")
-            Long tgChatId) {
-
-        return new ResponseEntity<ListLinksResponse>(HttpStatus.NOT_IMPLEMENTED);
+                    Long tgChatId) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            ListLinksResponse listLinksResponse = new ListLinksResponse();
+            listLinksResponse.setLinks(new ArrayList<>());
+            listLinksResponse.setSize(12);
+            return new ResponseEntity<>(listLinksResponse, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -37,16 +50,24 @@ public class LinksController implements Links {
                     schema = @Schema())
             @RequestHeader(
                     value = "Tg-Chat-Id")
-            Long tgChatId,
+                    Long tgChatId,
             @Parameter(
                     in = ParameterIn.DEFAULT,
                     required = true,
                     schema = @Schema())
             @Valid
             @RequestBody
-            AddLinkRequest body) {
+                    AddLinkRequest body) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            LinkResponse build = LinkResponse.builder()
+                    .id(1L)
+                    .url(URI.create("https://google.com"))
+                    .build();
+            return new ResponseEntity<>(build, HttpStatus.OK);
+        }
 
-        return new ResponseEntity<LinkResponse>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @Override
@@ -57,15 +78,23 @@ public class LinksController implements Links {
                     schema = @Schema())
             @RequestHeader(
                     value = "Tg-Chat-Id")
-            Long tgChatId,
+                    Long tgChatId,
             @Parameter(
                     in = ParameterIn.DEFAULT,
                     required = true,
                     schema = @Schema())
             @Valid
             @RequestBody
-            RemoveLinkRequest body) {
+                    RemoveLinkRequest body) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            LinkResponse build = LinkResponse.builder()
+                    .id(1L)
+                    .url(body.getLink())
+                    .build();
+            return new ResponseEntity<>(build, HttpStatus.OK);
+        }
 
-        return new ResponseEntity<LinkResponse>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
