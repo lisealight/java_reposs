@@ -1,4 +1,4 @@
-version: "3.9"
+version: "11"
 
 services:
   postgres:
@@ -21,15 +21,15 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-    delay: 15s
-    max_attempts: 15
+        delay: 30s
+        max_attempts: 10
     command:
-      - —hub-mode=off
-      - —changelog-file=master.xml
-      - —driver=org.postgresql.Driver
-      - —url=jdbc:postgresql://postgres:5432/scrapper
-      - —username=postgre_user
-      - —password=postgre_password
+      - --hub-mode=off
+      - --changelog-file=master.xml
+      - --driver=org.postgresql.Driver
+      - --url=jdbc:postgresql://postgres:5432/scrapper
+      - --username=postgre_user
+      - --password=postgre_password
       - update
     volumes:
       - ./migrations:/liquibase/changelog
