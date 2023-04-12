@@ -1,5 +1,3 @@
-package ru.tinkoff.edu.java.scrapper;
-
 import org.testcontainers.containers.PostgreSQLContainer;
 
 public class IntegrationEnvironment {
