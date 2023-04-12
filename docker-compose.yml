@@ -1,4 +1,4 @@
-version: "11"
+version: "1"
 
 services:
   postgres:
@@ -22,7 +22,7 @@ services:
       restart_policy:
         condition: on-failure
         delay: 30s
-        max_attempts: 10
+        max_attempts: 30
     command:
       - --hub-mode=off
       - --changelog-file=master.xml
