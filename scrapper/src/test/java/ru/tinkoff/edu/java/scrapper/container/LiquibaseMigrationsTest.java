@@ -50,7 +50,7 @@ public class LiquibaseMigrationsTest extends IntegrationEnvironment {
     @Test
     public void testInsert() throws SQLException {
         var preparedStatement = connection.createStatement();
-        var updateResult = preparedStatement.executeUpdate("INSERT INTO app.chats(tg_chat_id, nickname) VALUES (1, 'Vladimir')");
+        var updateResult = preparedStatement.executeUpdate("INSERT INTO app.chats(tg_chat_id, nickname) VALUES (1, 'name')");
 
         var statement = connection.createStatement();
         var rs = statement.executeQuery("SELECT * FROM app.chats");
@@ -58,7 +58,7 @@ public class LiquibaseMigrationsTest extends IntegrationEnvironment {
         assertAll(
                 () -> assertEquals(1, updateResult),
                 () -> assertEquals(1L, rs.getLong(1)),
-                () -> assertEquals("Vladimir", rs.getString(2))
+                () -> assertEquals("name", rs.getString(2))
         );
     }
 }
