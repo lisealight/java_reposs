@@ -25,7 +25,7 @@ class ParserTest {
     }
     @ParameterizedTest
     @ValueSource(strings = {
-            "https://github.com/Vitalik1995Rikov/",
+            "https://github.com/lizak/",
             "https://github.com/",
             "https://stackoverflow.com/",
             "https://stackoverflow.com/users",
@@ -41,8 +41,8 @@ class ParserTest {
 
     @Test
     void checkLink_shouldReturnGitHubResultRecord() {
-        String input = "https://github.com/Vitalik1995Rikov/testStWars";
-        String expected = new GitHubResultRecord("Vitalik1995Rikov", "testStWars").getResult();
+        String input = "https://github.com/lizak/testStWars";
+        String expected = new GitHubResultRecord("lizak", "testStWars").getResult();
 
         assertEquals(expected, parser.checkLink(input)
                 .getResult());
