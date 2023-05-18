@@ -1,9 +1,6 @@
-package ru.tinkoff.edu.java.bot.model.request;
+package ru.tinkoff.edu.java.scrapper.model.request;
 
 import lombok.*;
-
-import java.util.List;
-
 
 @Getter
 @Setter
@@ -12,11 +9,7 @@ import java.util.List;
 @Builder
 @ToString
 public class LinkUpdateRequest {
-
     private Long tgChat;
-
     private String url;
-
     private String description;
-
 }
