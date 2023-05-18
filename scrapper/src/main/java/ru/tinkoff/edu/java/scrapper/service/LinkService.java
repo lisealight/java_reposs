@@ -1,31 +1,20 @@
 package ru.tinkoff.edu.java.scrapper.service;
 
-import ru.tinkoff.edu.java.scrapper.model.dto.LinkResponseDto;
-import ru.tinkoff.edu.java.scrapper.model.dto.UpdatesDto;
-import ru.tinkoff.edu.java.scrapper.model.request.AddLinkRequest;
-import ru.tinkoff.edu.java.scrapper.model.request.RemoveLinkRequest;
-import ru.tinkoff.edu.java.scrapper.model.response.GitHubRepositoryInfoResponse;
-import ru.tinkoff.edu.java.scrapper.model.response.LinkResponse;
-import ru.tinkoff.edu.java.scrapper.model.response.ListLinksResponse;
-import ru.tinkoff.edu.java.scrapper.model.response.StackOverflowQuestionInfoResponse;
+import ru.tinkoff.edu.java.scrapper.dto.request.AddLinkRequest;
+import ru.tinkoff.edu.java.scrapper.dto.request.RemoveLinkRequest;
+import ru.tinkoff.edu.java.scrapper.dto.response.LinkResponse;
+import ru.tinkoff.edu.java.scrapper.dto.response.ListLinksResponse;
+import ru.tinkoff.edu.java.scrapper.entity.Link;
+
 
 import java.util.List;
 
 public interface LinkService {
-    LinkResponse addLink(Long tgChatId, AddLinkRequest request);
 
-    LinkResponse removeLink(Long tgChatId, RemoveLinkRequest request);
+    ListLinksResponse getLinksByChatId(Long id);
 
-    ListLinksResponse findAllLinksByTgChatId(Long tgChatId);
+    LinkResponse saveLink(Long id, AddLinkRequest addLinkRequest);
 
-    List<LinkResponseDto> findAllOldestLinksByLastCheck();
+    LinkResponse deleteLink(Long id, RemoveLinkRequest removeLinkRequest);
 
-    UpdatesDto findUpdatesByLinkIdAndLinkType(Long linkId, String type);
-
-    void setLastCheck(Long id);
-
-
-    void setStackOverflowLastUpdate(Long id, StackOverflowQuestionInfoResponse response);
-
-    void setGitHubLastUpdate(Long id, GitHubRepositoryInfoResponse update);
 }
