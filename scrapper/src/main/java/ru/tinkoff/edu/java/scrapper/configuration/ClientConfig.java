@@ -16,7 +16,6 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-
 public class ClientConfig {
     public static final int TIMEOUT = 5000;
     @Value("${github.webclient.base-url}")
