@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   postgres:
-    container_name: postgres
+    container_name: postgress
     image: postgres:14
     environment:
       POSTGRES_DB: scrapper
@@ -16,7 +16,7 @@ services:
       - backend
 
   liquibase-migrations:
-    container_name: liquibase
+    container_name: liquibasee
     image: liquibase/liquibase:4.18
     deploy:
       restart_policy:

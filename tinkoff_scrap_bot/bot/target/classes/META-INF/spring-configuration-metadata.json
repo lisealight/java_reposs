@@ -1,0 +1,38 @@
+{
+  "groups": [
+    {
+      "name": "app",
+      "type": "ru.tinkoff.edu.configuration.ApplicationConfig",
+      "sourceType": "ru.tinkoff.edu.configuration.ApplicationConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.exchange-name",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.configuration.ApplicationConfig"
+    },
+    {
+      "name": "app.queue-name",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.configuration.ApplicationConfig"
+    },
+    {
+      "name": "app.test",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.configuration.ApplicationConfig"
+    },
+    {
+      "name": "app.token",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.configuration.ApplicationConfig"
+    },
+    {
+      "name": "app.use-queue",
+      "type": "java.lang.Boolean",
+      "sourceType": "ru.tinkoff.edu.configuration.ApplicationConfig",
+      "defaultValue": false
+    }
+  ],
+  "hints": []
+}
