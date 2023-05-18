@@ -1,6 +1,7 @@
 package ru.tinkoff.edu.java.scrapper.configuration;
 
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import ru.tinkoff.edu.java.parser.URLParser;
@@ -28,5 +29,6 @@ public class ClientConfiguration {
     @Bean
     URLParser parser(){
         return new URLParser();
+
     }
 }

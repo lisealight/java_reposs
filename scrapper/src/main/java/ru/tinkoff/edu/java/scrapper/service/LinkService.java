@@ -6,6 +6,7 @@ import ru.tinkoff.edu.java.scrapper.dto.response.LinkResponse;
 import ru.tinkoff.edu.java.scrapper.dto.response.ListLinksResponse;
 import ru.tinkoff.edu.java.scrapper.entity.Link;
 
+
 import java.util.List;
 
 public interface LinkService {
@@ -15,4 +16,5 @@ public interface LinkService {
     LinkResponse saveLink(Long id, AddLinkRequest addLinkRequest);
 
     LinkResponse deleteLink(Long id, RemoveLinkRequest removeLinkRequest);
+
 }

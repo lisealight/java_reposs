@@ -1,5 +1,6 @@
 package ru.tinkoff.edu.java.scrapper.service.jooq;
 
+
 import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.parser.URLParser;
@@ -82,5 +83,6 @@ public class JooqLinkService implements LinkService {
             linkRepository.removeLink(link.getId());
         }
         return new LinkResponse(link.getId(), link.getLink());
+
     }
 }

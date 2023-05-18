@@ -2,6 +2,7 @@ package ru.tinkoff.edu.java.scrapper.configuration;
 
 import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.validation.annotation.Validated;
 import ru.tinkoff.edu.java.parser.URLParser;
@@ -24,4 +25,5 @@ public record ApplicationConfig(@NotNull String test, @NotNull Scheduler schedul
     public URLParser urlParser() {
         return new URLParser();
     }
+
 }
