@@ -11,16 +11,16 @@ import org.springframework.stereotype.Service;
 import ru.tinkoff.edu.java.bot.configuration.TelegramConfig;
 import ru.tinkoff.edu.java.bot.service.commands.CommandList;
 import ru.tinkoff.edu.java.bot.service.commands.Command;
-import ru.tinkoff.edu.java.bot.service.commands.impl.UnknownCommand;
+import ru.tinkoff.edu.java.bot.service.commands.implement.UnknownCommand;
 
 import java.util.List;
 
 @Service
-public class BotStarter implements Bot {
+public class StartBot implements Bot {
     private final TelegramBot bot;
     private final CommandList commandList;
 
-    public BotStarter(TelegramConfig telegramConfig, CommandList commandList) {
+    public StartBot(TelegramConfig telegramConfig, CommandList commandList) {
         this.bot = new TelegramBot(telegramConfig.token());
         this.commandList = commandList;
         botCommands();

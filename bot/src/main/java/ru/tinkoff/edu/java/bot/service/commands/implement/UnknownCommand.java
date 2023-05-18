@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.bot.service.commands.impl;
+package ru.tinkoff.edu.java.bot.service.commands.implement;
 
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;

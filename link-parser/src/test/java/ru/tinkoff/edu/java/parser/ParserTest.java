@@ -7,8 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import ru.tinkoff.edu.java.parser.links.GitHubLinkParse;
 import ru.tinkoff.edu.java.parser.links.LinkParse;
 import ru.tinkoff.edu.java.parser.links.StackOverflowLinkParse;
-import ru.tinkoff.edu.java.parser.result.GitHubResultRecord;
-import ru.tinkoff.edu.java.parser.result.StackOverflowResultRecord;
+import ru.tinkoff.edu.java.parser.result.GitResRecord;
+import ru.tinkoff.edu.java.parser.result.StackResRecord;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,7 +42,7 @@ class ParserTest {
     @Test
     void checkLink_shouldReturnGitHubResultRecord() {
         String input = "https://github.com/lisealight/test";
-        String expected = new GitHubResultRecord("lisealight", "test").getResult();
+        String expected = new GitResRecord("lisealight", "test").getResult();
 
         assertEquals(expected, parser.checkLink(input)
                 .getResult());
@@ -51,7 +51,7 @@ class ParserTest {
     @Test
     void checkLink_shouldReturnGStackOverflowResultRecord() {
         String input = "https://stackoverflow.com/questions/75886281/how-can-i-instantiate-in-a-grid-a-list-of-prefabs";
-        String expected = new StackOverflowResultRecord("75886281").getResult();
+        String expected = new StackResRecord("75886281").getResult();
 
         assertEquals(expected, parser.checkLink(input)
                 .getResult());

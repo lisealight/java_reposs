@@ -14,7 +14,7 @@ import ru.tinkoff.edu.java.bot.model.response.ListLinksResponse;
 
 @Service
 @RequiredArgsConstructor
-public class ScrapperClient {
+public class ScrapClient {
     private final WebClient webClient;
 
     public Mono<ResponseEntity<ListLinksResponse>> getLinks(Long tgChatId) {

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-import ru.tinkoff.edu.java.parser.result.StackOverflowResultRecord;
+import ru.tinkoff.edu.java.parser.result.StackResRecord;
 import ru.tinkoff.edu.java.scrapper.model.response.StackOverflowQuestionInfoResponse;
 
 @Service
@@ -14,7 +14,7 @@ public class StackOverflowClient {
     @Qualifier("stackOverflowClientWithTimeout")
     private final WebClient webClient;
 
-    public Mono<StackOverflowQuestionInfoResponse> getStackOverflowQuestionInfo(StackOverflowResultRecord questionId) {
+    public Mono<StackOverflowQuestionInfoResponse> getStackOverflowQuestionInfo(StackResRecord questionId) {
         return webClient.get()
                 .uri(uriBuilder -> {
                     return uriBuilder

@@ -3,14 +3,14 @@ package ru.tinkoff.edu.java.parser;
 import ru.tinkoff.edu.java.parser.links.LinkParse;
 import ru.tinkoff.edu.java.parser.links.GitHubLinkParse;
 import ru.tinkoff.edu.java.parser.links.StackOverflowLinkParse;
-import ru.tinkoff.edu.java.parser.result.ParseResult;
+import ru.tinkoff.edu.java.parser.result.ParseResultSeal;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
-public class LinkParserApplication {
+public class ParserApp {
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private static Parser parser;
 
@@ -32,8 +32,8 @@ public class LinkParserApplication {
             if (Objects.equals(input, "exit")) {
                 break;
             }
-            ParseResult parseResult = parser.checkLink(input);
-            System.out.println(parseResult == null ? null : parseResult.getResult());
+            ParseResultSeal parseResultSeal = parser.checkLink(input);
+            System.out.println(parseResultSeal == null ? null : parseResultSeal.getResult());
         }
     }
 }

@@ -1,6 +1,6 @@
 package ru.tinkoff.edu.java.parser.links;
 
-import ru.tinkoff.edu.java.parser.result.ParseResult;
+import ru.tinkoff.edu.java.parser.result.ParseResultSeal;
 
 public sealed abstract class LinkParse permits GitHubLinkParse, StackOverflowLinkParse {
     private LinkParse next;
@@ -14,9 +14,9 @@ public sealed abstract class LinkParse permits GitHubLinkParse, StackOverflowLin
         return first;
     }
 
-    public abstract ParseResult check(String link);
+    public abstract ParseResultSeal check(String link);
 
-    protected ParseResult checkNext(String link) {
+    protected ParseResultSeal checkNext(String link) {
         if (next == null) {
             return null;
         }

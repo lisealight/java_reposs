@@ -11,28 +11,28 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.tinkoff.edu.java.bot.configuration.TelegramConfig;
-import ru.tinkoff.edu.java.bot.service.LinkService;
-import ru.tinkoff.edu.java.bot.service.bot.BotStarter;
+import ru.tinkoff.edu.java.bot.service.LinkHandlerService;
+import ru.tinkoff.edu.java.bot.service.bot.StartBot;
 import ru.tinkoff.edu.java.bot.service.commands.CommandList;
-import ru.tinkoff.edu.java.bot.service.commands.impl.*;
+import ru.tinkoff.edu.java.bot.service.commands.implement.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class BotStarterTest {
+class StartBotTest {
     @InjectMocks
-    private BotStarter botStarter;
+    private StartBot startBot;
     @Mock
     private TelegramConfig telegramConfig;
     @Spy
     private CommandList commandList = new CommandList(
             new StartCommand(),
             new HelpCommand(),
-            new TrackCommand(),
+            new TrackCommand(new LinkHandlerService()),
             new UntrackCommand(),
-            new ListCommand(new LinkService()));
+            new ListCommand(new LinkHandlerService()));
     @Mock
     private Update update;
     @Mock
@@ -51,7 +51,7 @@ class BotStarterTest {
                    .chat()
                    .id()).thenReturn(1L);
 
-        SendMessage sendMessage = botStarter.handleByCommand(update, message);
+        SendMessage sendMessage = startBot.handleByCommand(update, message);
         assertAll(
                 () -> assertThat(sendMessage.getParameters()).extracting("chat_id")
                                                              .isEqualTo(1L),
@@ -71,7 +71,7 @@ class BotStarterTest {
                    .chat()
                    .id()).thenReturn(1L);
 
-        SendMessage sendMessage = botStarter.handleByCommand(update, message);
+        SendMessage sendMessage = startBot.handleByCommand(update, message);
         assertAll(
                 () -> assertThat(sendMessage.getParameters()).extracting("chat_id")
                                                              .isEqualTo(1L),

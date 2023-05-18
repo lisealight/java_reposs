@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import ru.tinkoff.edu.java.parser.result.StackOverflowResultRecord;
+import ru.tinkoff.edu.java.parser.result.StackResRecord;
 import ru.tinkoff.edu.java.scrapper.model.response.StackOverflowQuestionInfoResponse;
 import ru.tinkoff.edu.java.scrapper.service.client.StackOverflowClient;
 
@@ -15,7 +15,7 @@ public class StackOverflowTestController {
 
     @GetMapping("/stackoverflow/{id}")
     public StackOverflowQuestionInfoResponse getQuesInfo(@PathVariable Long id) {
-        return stackOverflowClient.getStackOverflowQuestionInfo(new StackOverflowResultRecord(String.valueOf(id)))
+        return stackOverflowClient.getStackOverflowQuestionInfo(new StackResRecord(String.valueOf(id)))
                            .block();
     }
 

@@ -7,9 +7,9 @@ import ru.tinkoff.edu.java.scrapper.configuration.ApplicationConfig;
 
 @SpringBootApplication
 @EnableConfigurationProperties(ApplicationConfig.class)
-public class ScrapperApplication {
+public class ScrapperApp {
     public static void main(String[] args) {
-        var ctx = SpringApplication.run(ScrapperApplication.class, args);
+        var ctx = SpringApplication.run(ScrapperApp.class, args);
         ApplicationConfig config = ctx.getBean(ApplicationConfig.class);
         System.out.println(config);
     }

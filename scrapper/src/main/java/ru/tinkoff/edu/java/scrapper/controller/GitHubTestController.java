@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import ru.tinkoff.edu.java.parser.result.GitHubResultRecord;
+import ru.tinkoff.edu.java.parser.result.GitResRecord;
 import ru.tinkoff.edu.java.scrapper.model.response.GitHubRepositoryInfoResponse;
 import ru.tinkoff.edu.java.scrapper.service.client.GitHubClient;
 
@@ -15,7 +15,7 @@ public class GitHubTestController {
 
     @GetMapping("/github/{user}/{repo}")
     public GitHubRepositoryInfoResponse getRepoInfo(@PathVariable String user, @PathVariable String repo) {
-        return gitHubClient.getGitHubRepositoryInfo(new GitHubResultRecord(user, repo))
+        return gitHubClient.getGitHubRepositoryInfo(new GitResRecord(user, repo))
                            .block();
     }
 

@@ -1,7 +1,7 @@
 package ru.tinkoff.edu.java.parser;
 
 import ru.tinkoff.edu.java.parser.links.LinkParse;
-import ru.tinkoff.edu.java.parser.result.ParseResult;
+import ru.tinkoff.edu.java.parser.result.ParseResultSeal;
 
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -14,7 +14,7 @@ public class Parser {
         this.linkParse = linkParse;
     }
 
-    public ParseResult checkLink(String link) {
+    public ParseResultSeal checkLink(String link) {
         if (!isValidUrl(link)) {
             return null;
         }

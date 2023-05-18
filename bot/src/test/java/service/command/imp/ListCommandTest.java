@@ -9,8 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.tinkoff.edu.java.bot.service.LinkService;
-import ru.tinkoff.edu.java.bot.service.commands.impl.ListCommand;
+import ru.tinkoff.edu.java.bot.service.LinkHandlerService;
+import ru.tinkoff.edu.java.bot.service.commands.implement.ListCommand;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ class ListCommandTest {
     @InjectMocks
     private ListCommand listCommand;
     @Mock
-    private LinkService linkService;
+    private LinkHandlerService linkHandlerService;
     @Mock
     private Update update;
     @Mock
@@ -33,7 +33,7 @@ class ListCommandTest {
 
     @Test
     void handle_shouldReturnStringFromService() {
-        when(linkService.getLinkList()).thenReturn(List.of("some_string"));
+        when(linkHandlerService.getLinkList()).thenReturn(List.of("some_string"));
         when(update.message()).thenReturn(message);
         when(message.chat()).thenReturn(chat);
         when(chat.id()).thenReturn(1L);
@@ -52,7 +52,7 @@ class ListCommandTest {
     void handle_shouldReturnStringByDefault() {
         String listCommandAnswer = ListCommand.getLINK_LIST_IS_EMPTY();
 
-        when(linkService.getLinkList()).thenReturn(List.of());
+        when(linkHandlerService.getLinkList()).thenReturn(List.of());
         when(update.message()).thenReturn(message);
         when(message.chat()).thenReturn(chat);
         when(chat.id()).thenReturn(1L);
